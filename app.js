@@ -71,6 +71,13 @@ socketio.on("connection", (socket) => {
     socket.emit("RequestedFile", file);
   });
 
+  socket.on("UpdateFile", (args) => {
+    console.log("Request UpdateFile: ", args);
+    let file = files.find(({ id }) => id === args.id);
+    file.content = args.content;
+    socketio.sockets.except(socket.id).emit("FileUpdated", file);
+  });
+
   socket.on("FetchAllFileTitles", () => {
     console.log("Request FetchAllFileTitles.");
     socket.emit(
