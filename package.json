@@ -1,0 +1,24 @@
+{
+  "name": "chatroom",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A class final using socket.io",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": "https://github.com/moontai0724/chatrooom-socketio-js",
+  "author": {
+    "name": "moontai0724",
+    "email": "moontai0724@gmail.com",
+    "url": "https://www.moontai0724.tw"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^11.0.0",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.1.1",
+    "socket.io": "^4.4.1"
+  }
+}
