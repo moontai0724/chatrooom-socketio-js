@@ -69,13 +69,21 @@ socketio.on("connection", (socket) => {
     console.log("Request OpenFile: ", args);
     let file = files.find(({ id }) => id === args.id);
     socket.emit("RequestedFile", file);
+
+    if (!file) return;
+
+    socket.rooms.forEach((room) => {
+      if (socket.id !== room) socket.leave(room);
+    });
+    socket.join(file.id);
+    console.log(socket.rooms);
   });
 
   socket.on("UpdateFile", (args) => {
     console.log("Request UpdateFile: ", args);
     let file = files.find(({ id }) => id === args.id);
     file.content = args.content;
-    socketio.sockets.except(socket.id).emit("FileUpdated", file);
+    socketio.sockets.in(file.id).except(socket.id).emit("FileUpdated", file);
   });
 
   socket.on("FetchAllFileTitles", () => {
