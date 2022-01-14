@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ."
   },
-  "repository": "https://github.com/moontai0724/chatrooom-socketio-js",
+  "repository": "https://github.com/moontai0724/online-editor-backend",
   "author": {
     "name": "moontai0724",
     "email": "moontai0724@gmail.com",
